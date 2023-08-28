@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { CommentIcon, ShareIcon, ViewIcon } from '../../common/CustomIcon'
 import axios from 'axios';
 import Comment from '../Comment';
+import { useParams } from 'react-router-dom';
 
-const Post = ({showModal}) => {
-    const [radomEvent, setRandomEvent] = useState({});
+const Post = ({ showModal }) => {
+  const {idVideo}=useParams()
+  const [radomEvent, setRandomEvent] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -31,41 +33,44 @@ const Post = ({showModal}) => {
     }
     fetchData();
   }, []);
-    return (
-        <div className='grid grid-cols-1 mt-[40px] lg:grid-cols-3'>
-            <div className='rounded-tl-[20px] rounded-bl-[20px] bg-white ml-[10px]'>
-                <img src={radomEvent.User_Avatar} className='h-96 my-5 w-[90%] mx-3 rounded-[20px]' />
-            </div>
-            <div className='w-full bg-white rounded-tr-[20px] rounded-br-[20px]'>
-                <div className="flex items-center my-5 mx-3">
-                    <div className="w-fit h-fit mr-2">
-                        <img
-                            src={radomEvent.User_Avatar}
-                            alt="User Avatar"
-                            className="w-12 h-12 object-cover rounded-full mx-auto items-center"
-                        />
-                    </div>
-                    <div className="text-lg font-bold">{radomEvent.User_Name}</div>
-                </div>
-                <div className="mt-3 mb-6 font-semibold ml-3 mr-3">{radomEvent.Name}</div>
-                <div className="flex ml-3">
-                    <div className="flex grow">
-                        <ViewIcon width={24} height={24} />
-                        <p className="font-semibold ml-2">13.2k views</p>
-                    </div>
-                    <div className="flex grow-0">
-                        <p className="font-semibold mr-2">14</p>
-                        <ShareIcon width={24} height={24} />
-                    </div>
-                    <div className="flex grow-0 ml-2 mr-3">
-                        <p className="font-semibold mr-2">14</p>
-                        <CommentIcon showModal={showModal} width={24} height={24} />
-                    </div>
-                </div>
-            </div>
-            <Comment/>
+  //https://www.tiktok.com/@carttitan360/video/7248955047357304107?is_from_webapp=1&sender_device=pc
+  return (
+    <div className='grid grid-cols-1 mt-[40px] lg:grid-cols-3 '>
+      <div className='rounded-tl-[20px] rounded-bl-[20px] bg-white ml-[10px] h-full' >
+        <iframe className='h-[35rem] my-5 w-[90%] mx-3 rounded-[20px]'
+          src={`https://www.tiktok.com/embed/${idVideo}`}>
+        </iframe>
+      </div>
+      <div className='w-full bg-white rounded-tr-[20px] rounded-br-[20px]'>
+        <div className="flex items-center my-5 mx-3">
+          <div className="w-fit h-fit mr-2">
+            <img
+              src={radomEvent.User_Avatar}
+              alt="User Avatar"
+              className="w-12 h-12 object-cover rounded-full mx-auto items-center"
+            />
+          </div>
+          <div className="text-lg font-bold">{radomEvent.User_Name}</div>
         </div>
-    )
+        <div className="mt-3 mb-6 font-semibold ml-3 mr-3">{radomEvent.Name}</div>
+        <div className="flex ml-3">
+          <div className="flex grow">
+            <ViewIcon width={24} height={24} />
+            <p className="font-semibold ml-2">13.2k views</p>
+          </div>
+          <div className="flex grow-0">
+            <p className="font-semibold mr-2">14</p>
+            <ShareIcon width={24} height={24} />
+          </div>
+          <div className="flex grow-0 ml-2 mr-3">
+            <p className="font-semibold mr-2">14</p>
+            <CommentIcon showModal={showModal} width={24} height={24} />
+          </div>
+        </div>
+      </div>
+      <Comment />
+    </div>
+  )
 }
 
 export default Post

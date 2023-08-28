@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 
 function Modal({ hiddenModal }) {
     const userAgent = window.navigator.userAgent
-    console.log(userAgent);
     const androidMatch = userAgent.match(/Android/i)
     const iosMatch = userAgent.match(/Os/i)
     return (
@@ -30,7 +29,7 @@ function Modal({ hiddenModal }) {
                         </button></NavLink>
                     </div>
                     <div className="flex justify-center items-center mt-5">
-                        <Link to={`${androidMatch ? "https://play.google.com/store/apps/details?id=com.thinkdiffai.futurelove" : `${iosMatch ? "https://play.google.com/store/apps/details?id=com.thinkdiffai.futurelove" : "https://www.facebook.com/"}`}`}><button className="bg-purple-950 px-5 py-5 text-white rounded-lg hover:bg-purple-600">Free Download</button></Link>
+                        <Link to={`${androidMatch ? "https://play.google.com/store/apps/details?id=com.thinkdiffai.futurelove" : `${iosMatch ? "https://play.google.com/store/apps/details?id=com.thinkdiffai.futurelove" : "https://play.google.com/store/apps/details?id=com.thinkdiffai.futurelove"}`}`}><button className="bg-purple-950 px-5 py-5 text-white rounded-lg hover:bg-purple-600">Free Download</button></Link>
                     </div>
                 </div>
             </div>

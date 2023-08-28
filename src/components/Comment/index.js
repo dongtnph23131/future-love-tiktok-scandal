@@ -84,7 +84,7 @@ const Comment = () => {
                 Comments
                 <div className="absolute left-0 right-0 h-0.5 bg-gray-200 bottom-0"></div>
             </div>
-            <div className="overflow-y-scroll h-80 scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-400 scrollbar-track-gray-300">
+            <div className="h-[30rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-400 scrollbar-track-gray-300">
                 {radomEvents.map((content,index) => (
                     <div className="p-5" key={index+1}>
                         <div className="flex">
