@@ -58,7 +58,6 @@ const Comment = () => {
                 ];
             },
                 []);
-
             setComment(flattenedCommentData);
         }
         fetchCommentData();
@@ -73,10 +72,8 @@ const Comment = () => {
     };
 
     const handleHideReplies = (eventSTT) => {
-        setShowReplies((prevShowReplies) => ({
-            ...prevShowReplies,
-            [eventSTT]: false,
-        }));
+        setEventOnClick();
+        setShowReplies({});
     };
     return (
         <div className='w-[95%] bg-white ml-3 rounded-[20px]'>
@@ -85,8 +82,8 @@ const Comment = () => {
                 <div className="absolute left-0 right-0 h-0.5 bg-gray-200 bottom-0"></div>
             </div>
             <div className="h-[30rem] overflow-y-scroll scrollbar-thin scrollbar-thumb-rounded-md scrollbar-thumb-gray-400 scrollbar-track-gray-300">
-                {radomEvents.map((content,index) => (
-                    <div className="p-5" key={index+1}>
+                {radomEvents.map((content, index) => (
+                    <div className="p-5" key={index + 1}>
                         <div className="flex">
                             <div>
                                 <img
@@ -142,8 +139,8 @@ const Comment = () => {
                                             comment.idParent.toLowerCase() ===
                                             content.idParent.toLowerCase()
                                     )
-                                    .map((comment) => (
-                                        <div className="p-2 ml-5">
+                                    .map((comment, index) => (
+                                        <div className="p-2 ml-5" key={index + 1}>
                                             <div className="flex">
                                                 <div>
                                                     <img
